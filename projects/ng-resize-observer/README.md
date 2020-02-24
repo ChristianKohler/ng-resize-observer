@@ -73,6 +73,10 @@ on every component. Or import it once in a module:
 })
 ```
 
+## Prefer a directive over a observable?
+
+Check out: https://www.npmjs.com/package/ngx-resize-observer
+
 ## Warning
 
 ResizeObserver is still a draft and is not yet finalised and is subject to change.
