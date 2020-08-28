@@ -4,7 +4,7 @@ import {
   Inject,
   Injectable,
   OnDestroy,
-  Optional
+  Optional,
 } from "@angular/core";
 import { ResizeObserver, ResizeObserverEntry } from "@juggle/resize-observer";
 import { Observable, Subject } from "rxjs";
@@ -49,7 +49,7 @@ export class ResizeObserverService implements OnDestroy {
   }
 
   private observe() {
-    this.resizeObserver = new this.ResizeObserver(entries => {
+    this.resizeObserver = new this.ResizeObserver((entries) => {
       const entry = entries && entries[0];
       if (entry) {
         this.onResizeSubject.next(entry);
@@ -68,9 +68,14 @@ export class ResizeObserverService implements OnDestroy {
   }
 }
 
+export function ngResizeObserverFactory(
+  resizeObserverService: ResizeObserverService
+) {
+  return resizeObserverService.onResize;
+}
+
 export const NgResizeObserverProvider = {
   provide: NgResizeObserver,
-  useFactory: (resizeObserverService: ResizeObserverService) =>
-    resizeObserverService.onResize,
-  deps: [ResizeObserverService]
+  useFactory: ngResizeObserverFactory,
+  deps: [ResizeObserverService],
 };
