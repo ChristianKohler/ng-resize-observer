@@ -1,6 +1,6 @@
 {
   "name": "ng-resize-observer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "ISC",
   "author": {
     "name": "Christian Kohler",
@@ -10,6 +10,6 @@
     "@angular/common": ">=9",
     "@angular/core": ">=9",
     "@juggle/resize-observer": "^3.0.2",
-    "tslib": "^1.10.0"
+    "tslib": ">1.10"
   }
 }
