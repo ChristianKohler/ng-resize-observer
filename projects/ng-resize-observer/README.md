@@ -7,6 +7,7 @@ npm install ng-resize-observer
 ```
 
 ## Usage
+
 ```typescript
 import {
   NgResizeObserver,
@@ -24,14 +25,13 @@ export class AppComponent {
 }
 ```
 
-
 ## Example
 
 ```typescript
 import { Component } from "@angular/core";
 import {
   NgResizeObserver,
-  ngResizeObserverProviders
+  ngResizeObserverProviders,
 } from "ng-resize-observer";
 import { map } from "rxjs/operators";
 
@@ -44,12 +44,12 @@ import { map } from "rxjs/operators";
         display: block;
         border: 3px solid green;
       }
-    `
+    `,
   ],
-  providers: [...ngResizeObserverProviders]
+  providers: [...ngResizeObserverProviders],
 })
 export class AppComponent {
-  width$ = this.resize$.pipe(map(entry => entry.contentRect.width));
+  width$ = this.resize$.pipe(map((entry) => entry.contentRect.width));
 
   constructor(private resize$: NgResizeObserver) {}
 }
@@ -62,7 +62,7 @@ The ponyfill https://github.com/juggle/resize-observer is not bundled by default
 To include the bundle, use either
 
 ```typescript
-providers: [...ngResizeObserverProvidersWithPonyfill]
+providers: [...ngResizeObserverProvidersWithPonyfill];
 ```
 
 on every component. Or import it once in a module:
@@ -71,6 +71,15 @@ on every component. Or import it once in a module:
 @NgModule({
     imports: [NgResizeObserverPonyfillModule]
 })
+```
+
+## Warning
+
+Angular does not zone patch resize-observer. Nor does this library. This means that change detection is not triggered in certain async situations. To be safe its recommended to add the zone patch for resize-observer in your polyfill.ts.
+
+```typescript
+// polyfill.js
+import "zone.js/dist/zone-patch-resize-observer";
 ```
 
 ## Prefer a directive over a observable?
