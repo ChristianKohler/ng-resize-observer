@@ -1,21 +1,21 @@
 import {
   NgResizeObserverProvider,
   ResizeObserverService,
-  NgResizeObserver
-} from "./lib/ng-resize-observer.service";
+  NgResizeObserver,
+} from './lib/ng-resize-observer.service';
 import {
   NgResizeObserverPonyfillModule,
-  polyfillProvider
-} from "./lib/ponyfill.module";
+  polyfillProvider,
+} from './lib/ponyfill.module';
 
 const ngResizeObserverProviders = [
   NgResizeObserverProvider,
-  ResizeObserverService
+  ResizeObserverService,
 ];
 
 const ngResizeObserverProvidersWithPonyfill = [
   ...ngResizeObserverProviders,
-  polyfillProvider
+  polyfillProvider,
 ];
 
 /*
@@ -25,5 +25,5 @@ export {
   NgResizeObserver,
   ngResizeObserverProviders,
   ngResizeObserverProvidersWithPonyfill,
-  NgResizeObserverPonyfillModule
+  NgResizeObserverPonyfillModule,
 };

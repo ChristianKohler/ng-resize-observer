@@ -85,7 +85,3 @@ import "zone.js/dist/zone-patch-resize-observer";
 ## Prefer a directive over a observable?
 
 Check out: https://www.npmjs.com/package/ngx-resize-observer
-
-## Warning
-
-ResizeObserver is still a draft and is not yet finalised and is subject to change.

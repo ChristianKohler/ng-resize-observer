@@ -1,15 +1,18 @@
 {
   "name": "ng-resize-observer",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "license": "ISC",
   "author": {
     "name": "Christian Kohler",
     "url": "https://christiankohler.net"
   },
   "peerDependencies": {
-    "@angular/common": ">=9",
-    "@angular/core": ">=9",
-    "@juggle/resize-observer": "^3.0.2",
-    "tslib": ">1.10"
-  }
+    "@angular/common": "^15.1.0",
+    "@angular/core": "^15.1.0",
+    "@juggle/resize-observer": "^3.4.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
 }
