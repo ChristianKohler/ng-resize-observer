@@ -1,91 +1,24 @@
-# Angular Resize Observer
+# NgResizeObserver
 
-## Installation
+This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.0.
 
-```bash
-npm install ng-resize-observer
-```
+## Code scaffolding
 
-## Usage
+Run `ng generate component component-name --project ng-resize-observer` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ng-resize-observer`.
+> Note: Don't forget to add `--project ng-resize-observer` or else it will be added to the default project in your `angular.json` file. 
 
-```typescript
-import {
-  NgResizeObserver,
-  ngResizeObserverProviders
-} from "ng-resize-observer";
+## Build
 
-@Component({
-  ...
-  // 1. Add providers
-  providers: [...ngResizeObserverProviders]
-})
-export class AppComponent {
-  // 2. Inject resize$
-  constructor(private resize$: NgResizeObserver) {}
-}
-```
+Run `ng build ng-resize-observer` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Example
+## Publishing
 
-```typescript
-import { Component } from "@angular/core";
-import {
-  NgResizeObserver,
-  ngResizeObserverProviders,
-} from "ng-resize-observer";
-import { map } from "rxjs/operators";
+After building your library with `ng build ng-resize-observer`, go to the dist folder `cd dist/ng-resize-observer` and run `npm publish`.
 
-@Component({
-  selector: "app-root",
-  template: "width is {{ width$ | async }} px",
-  styles: [
-    `
-      :host {
-        display: block;
-        border: 3px solid green;
-      }
-    `,
-  ],
-  providers: [...ngResizeObserverProviders],
-})
-export class AppComponent {
-  width$ = this.resize$.pipe(map((entry) => entry.contentRect.width));
+## Running unit tests
 
-  constructor(private resize$: NgResizeObserver) {}
-}
-```
+Run `ng test ng-resize-observer` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Ponyfill
+## Further help
 
-The ponyfill https://github.com/juggle/resize-observer is not bundled by default.
-
-To include the bundle, use either
-
-```typescript
-providers: [...ngResizeObserverProvidersWithPonyfill];
-```
-
-on every component. Or import it once in a module:
-
-```typescript
-@NgModule({
-    imports: [NgResizeObserverPonyfillModule]
-})
-```
-
-## Warning
-
-Angular does not zone patch resize-observer. Nor does this library. This means that change detection is not triggered in certain async situations. To be safe its recommended to add the zone patch for resize-observer in your polyfill.ts.
-
-```typescript
-// polyfill.js
-import "zone.js/dist/zone-patch-resize-observer";
-```
-
-## Prefer a directive over a observable?
-
-Check out: https://www.npmjs.com/package/ngx-resize-observer
-
-## Warning
-
-ResizeObserver is still a draft and is not yet finalised and is subject to change.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

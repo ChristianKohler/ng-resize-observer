@@ -15,7 +15,7 @@ export class NgResizeObserver extends Observable<ResizeObserverEntry> {}
 @Injectable()
 export class ResizeObserverService implements OnDestroy {
   private onResizeSubject = new Subject<ResizeObserverEntry>();
-  private resizeObserver: ResizeObserver;
+  private resizeObserver!: ResizeObserver;
   public onResize: Observable<
     ResizeObserverEntry
   > = this.onResizeSubject.asObservable();
